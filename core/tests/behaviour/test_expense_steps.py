@@ -50,12 +50,6 @@ def check_total(context, total):
     assert context["service"].total_amount() == total
 
 
-# @then(parsers.parse("{month_name} debe sumar {expected_total:d} euros"))
-# def check_month_total(context, month_name, expected_total):
-# total_actual = context["totals"].get(month_name, 0)
-# assert total_actual == expected_total
-
-
 @then(parsers.parse("{month_name} debe sumar {expected_total:d} euros"))
 def check_month_total(context, month_name, expected_total):
     month_number = datetime.strptime(month_name, "%B").month
