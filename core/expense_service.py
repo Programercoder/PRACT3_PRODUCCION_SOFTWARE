@@ -3,6 +3,7 @@ from collections import defaultdict
 from core.expense import Expense
 import abc
 from typing import Dict
+from typing import Optional
 
 
 class ExpenseRepository(abc.ABC):
