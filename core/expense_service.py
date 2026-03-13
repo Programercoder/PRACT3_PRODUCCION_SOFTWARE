@@ -1,6 +1,8 @@
 from datetime import date
 from collections import defaultdict
 from core.expense import Expense
+from calendar import month_name
+
 import abc
 from typing import Dict
 from typing import Optional
@@ -81,7 +83,7 @@ class ExpenseService:
         totals: Dict[str, float] = {}
 
         for expense in self._repository.list_all():
-            key = expense.expense_date.strftime("%Y-%m")
-            totals[key] = totals.get(key, 0) + expense.amount
+            month = month_name[expense.expense_date.month]
+            totals[month] = totals.get(key, 0) + expense.amount
 
         return dict(totals)
