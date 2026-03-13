@@ -86,4 +86,4 @@ class ExpenseService:
             key = expense.expense_date.strftime("%Y-%m")
             totals[key] = totals.get(key, 0) + expense.amount
 
-    return totals
+        return totals
