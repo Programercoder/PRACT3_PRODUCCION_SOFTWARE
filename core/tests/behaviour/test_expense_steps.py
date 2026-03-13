@@ -38,6 +38,10 @@ def add_expense(context, amount, title):
 def remove_expense(context, expense_id):
     context["service"].remove_expense(expense_id)
 
+@when("consulto el total de gastos por mes")
+def calculate_totals(context):
+  context["totals"] = context["service"].total_by_month()
+
 
 @then(parsers.parse("el total de dinero gastado debe ser {total:d} euros"))
 def check_total(context, total):
@@ -48,6 +52,7 @@ def check_total(context, total):
 def check_month_total(context, month_name, expected_total):
     total_actual = context["totals"].get(month_name, 0)
     assert total_actual == expected_total
+
 
 
 @then(parsers.parse("debe haber {expenses:d} gastos registrados"))
