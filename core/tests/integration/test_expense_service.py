@@ -172,8 +172,6 @@ def test_total_amount_after_removal():
 
     assert service.total_amount() == 55
 
-
     service.remove_expense(1)
-
 
     assert service.total_amount() == 25

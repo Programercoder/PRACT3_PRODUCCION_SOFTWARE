@@ -5,6 +5,7 @@ from core.in_memory_expense_repository import InMemoryExpenseRepository
 from datetime import date
 from core.expense import Expense
 
+
 def create_expense(id=1, title="Test", amount=10):
     return Expense(
         id=id, title=title, amount=amount, description="", expense_date=date.today()
@@ -59,7 +60,9 @@ def test_get_by_id_returns_expense():
     """
     ...
     repo = InMemoryExpenseRepository()
-    expense = Expense(id=1, title="TestGet", amount=15, description="", expense_date=date.today())
+    expense = Expense(
+        id=1, title="TestGet", amount=15, description="", expense_date=date.today()
+    )
     repo.save(expense)
 
     found = repo.get_by_id(1)
@@ -67,7 +70,6 @@ def test_get_by_id_returns_expense():
     assert found.id == 1
     assert found.title == "TestGet"
     assert found.amount == 15
-
 
 
 def test_get_by_id_returns_none_if_not_found():
