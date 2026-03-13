@@ -83,7 +83,7 @@ class ExpenseService:
         totals: Dict[str, float] = {}
 
         for expense in self._repository.list_all():
-            month = month_name[expense.expense_date.month]
-            totals[month] = totals.get(month, 0) + expense.amount
+          key = expense.expense_date.strftime("%Y-%m")
+          totals[key] = totals.get(key, 0) + expense.amount
 
-        return dict(totals)
+    return totals
