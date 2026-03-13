@@ -82,6 +82,6 @@ class ExpenseService:
 
         for expense in self._repository.list_all():
             key = expense.expense_date.strftime("%Y-%m")
-            totals[key] += expense.amount
+            totals[key] = totals.get(key, 0) + expense.amount
 
         return dict(totals)
